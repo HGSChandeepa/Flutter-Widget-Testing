@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/simple_widget.dart';
+import 'package:flutter_application_1/widgets/example1/simple_widget.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

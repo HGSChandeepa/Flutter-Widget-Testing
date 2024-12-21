@@ -1,0 +1,25 @@
+This example demonstrates several advanced testing concepts:
+
+Testing asynchronous operations with Completer
+Testing animations and transitions
+Testing debounce behavior
+Testing error states
+Testing user interactions
+Testing loading states
+Testing widget cleanup
+Mock function tracking
+Complex widget state management
+Animation controller testing
+Timer-based operations
+Error boundary testing
+
+The widget itself includes advanced features like:
+
+Debounced search
+Animated suggestions list
+Loading states
+Error handling
+Clear functionality
+Custom styling
+Memory management
+State cleanup
