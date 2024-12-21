@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/widgets/simple_widget.dart';
 
 void main() {
   runApp(const MainApp());
@@ -11,8 +12,9 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+        body: MyWidget(
+          title: "This is Samin ",
+          message: "And this is the description",
         ),
       ),
     );
