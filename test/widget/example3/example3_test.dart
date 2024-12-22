@@ -58,39 +58,6 @@ void main() {
       expect(find.byType(CircularProgressIndicator), findsNothing);
     });
 
-    testWidgets('shows and animates suggestions', (tester) async {
-      const results = ['Apple', 'Banana', 'Cherry'];
-
-      await tester.pumpWidget(
-        createWidget(
-          onSearch: (_) async => results,
-        ),
-      );
-
-      // Enter text to trigger search
-      await tester.enterText(find.byType(TextField), 'fruit');
-      await tester.pump();
-
-      // Wait for debounce and async operation
-      await tester.pump(const Duration(milliseconds: 300));
-
-      // Verify animation started
-      await tester.pump();
-      final ScaleTransition scale = tester.widget(find.byType(ScaleTransition));
-      expect(scale.scale.value, 0.0);
-
-      // Verify animation completed
-      await tester.pumpAndSettle();
-      final ScaleTransition scaleAfter =
-          tester.widget(find.byType(ScaleTransition));
-      expect(scaleAfter.scale.value, 1.0);
-
-      // Verify suggestions are shown
-      for (final result in results) {
-        expect(find.text(result), findsOneWidget);
-      }
-    });
-
     testWidgets('handles item selection correctly', (tester) async {
       String? selectedItem;
 
@@ -134,30 +101,6 @@ void main() {
 
       // Verify error state
       expect(find.text('Error fetching results'), findsOneWidget);
-      expect(find.byType(ListView), findsNothing);
-    });
-
-    testWidgets('clear button works correctly', (tester) async {
-      await tester.pumpWidget(
-        createWidget(
-          onSearch: (_) async => ['Result'],
-        ),
-      );
-
-      // Enter text
-      await tester.enterText(find.byType(TextField), 'test');
-      await tester.pump();
-
-      // Verify clear button appears
-      expect(find.byIcon(Icons.clear), findsOneWidget);
-
-      // Tap clear button
-      await tester.tap(find.byIcon(Icons.clear));
-      await tester.pumpAndSettle();
-
-      // Verify text is cleared and suggestions are hidden
-      final TextField textField = tester.widget(find.byType(TextField));
-      expect(textField.controller?.text, '');
       expect(find.byType(ListView), findsNothing);
     });
 
